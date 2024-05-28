@@ -7,11 +7,11 @@ class Matkul:
         return f"{self.nama} ({self.sks} SKS)"
 
 
-class KRS:
+class Krs:
     def __init__(self):
         self.matkul_list = []
 
-    def tambah_matkul(self, matkul):
+    def simpan_matkul(self, matkul):
         self.matkul_list.append(matkul)
 
     def hapus_matkul(self, nama_matkul):
@@ -31,15 +31,15 @@ class KRS:
             print("Daftar Mata Kuliah di KRS:")
             for matkul in self.matkul_list:
                 print(f"- {matkul}")
-            print(f"Total SKS: {self.total_sks()}")
+            print(f"Total SKS: {self.total_sks()}\n")
 
 
-def tambah_matkul_ke_krs(krs):
+def simpan_matkul_ke_krs(krs):
     nama = input("Masukkan nama mata kuliah: ")
     sks = int(input("Masukkan jumlah SKS: "))
     matkul = Matkul(nama, sks)
-    krs.tambah_matkul(matkul)
-    print(f"Mata kuliah {nama} berhasil ditambahkan.\n")
+    krs.simpan_matkul(matkul)
+    print(f"Mata kuliah {nama} berhasil disimpan.\n")
 
 
 def hapus_matkul_dari_krs(krs):
@@ -51,18 +51,17 @@ def hapus_matkul_dari_krs(krs):
 
 
 def main():
-    krs_mahasiswa = KRS()
+    krs_mahasiswa = Krs()
 
     while True:
-        print("\nSelamat Datang di Sistem KRS. Apa yang ingin Anda lakukan?")
-        print("1. Tambah Mata Kuliah")
+        print("1. Simpan Mata Kuliah")
         print("2. Hapus Mata Kuliah")
         print("3. Tampilkan KRS")
         print("4. Keluar")
         pilihan = input("Masukkan pilihan (1/2/3/4): ")
 
         if pilihan == "1":
-            tambah_matkul_ke_krs(krs_mahasiswa)
+            simpan_matkul_ke_krs(krs_mahasiswa)
         elif pilihan == "2":
             hapus_matkul_dari_krs(krs_mahasiswa)
         elif pilihan == "3":
@@ -71,7 +70,7 @@ def main():
             print("Terima kasih. Sampai jumpa!")
             break
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
+            print("Pilihan tidak valid. Silakan input angka 1-4.")
 
 
 if __name__ == "__main__":
